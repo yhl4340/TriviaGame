@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en-us'>
+<head>
+<meta charset="UTF-8">
+<title>Trivia Game</title>
+
+<!-- style sheets -->
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<style>
+    #question li {
+        list-style:none;
+        cursor: pointer;
+    }
+    .clicked {
+        background: gray;
+    }
+</style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron">Trivia Game</div>
+    
+        <div id='time-remaining'>Time Remaining: </div>
+        <div id='question'>Question
+            <h2>Question Title</h2>
+            <ul>
+                <li>opt1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+        <div id='correct'>Correct</div>
+        <div id='incorrect'>--alert-incorrect</div>
+        <div id='alert-correct'></div>
+        <div id='alert-incorrect'></div>
+        
+        <div id='summary'>Results</div>
+    
+    </div> 
+
+
+
+<!-- ==========================================instructions======================
+
+--You'll create a trivia game that shows only one question until the player answers it or their time runs out.
+If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, display the next question -- do this without user input.
+
+--If the player runs out of time, tell the player that time's up and display the correct answer. Wait a few seconds, then show the next question.
+If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer. Wait a few seconds, then show the next question.
+
+--On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page). -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+</html>
