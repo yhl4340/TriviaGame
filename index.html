@@ -14,15 +14,20 @@
         list-style:none;
         cursor: pointer;
     }
-    .active {
+   button .clicked {
         background: red;
     }
     #question button {
         display: block;
         width: 30%;
         text-align: left;
-
     }
+    #question button:focus{
+        background:yellow;
+    }
+    /* #question button:hover {
+        background: green;
+    } */
 </style>
 </head>
 <body>
@@ -33,11 +38,13 @@
         <div id='question'>Question
             <h2>Question Title</h2>
             <ul>
+                <li>op1</li>
+                <li>op2</li>
+                <li>op3</li>
+                <li>op4</li>
 
-                <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>    
+
+                
 
             </ul>
             <button id="submit" type="button">Submit</button>
