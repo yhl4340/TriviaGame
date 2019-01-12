@@ -14,8 +14,14 @@
         list-style:none;
         cursor: pointer;
     }
-    .clicked {
-        background: gray;
+    .active {
+        background: red;
+    }
+    #question button {
+        display: block;
+        width: 30%;
+        text-align: left;
+
     }
 </style>
 </head>
@@ -23,15 +29,18 @@
     <div class="container-fluid">
         <div class="jumbotron">Trivia Game</div>
     
-        <div id='time-remaining'>Time Remaining: </div>
+        <div id='time-remaining'>Time Remaining: 30</div>
         <div id='question'>Question
             <h2>Question Title</h2>
             <ul>
-                <li>opt1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
+
+                <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>    
+
             </ul>
+            <button id="submit" type="button">Submit</button>
         </div>
         <div id='correct'>Correct</div>
         <div id='incorrect'>--alert-incorrect</div>

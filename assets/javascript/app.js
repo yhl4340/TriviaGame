@@ -38,20 +38,22 @@ function showQ() {
 
 //for loop to loop through the answer property of the chosen array. then append them to the li
     for (var i = 0; i < question.answer.length; i++){
-        var newLi = $('<li>' + question.answer[i] + '<li>' ); 
+        var newLi = $('<button>' + question.answer[i] + '</button>' ); 
         $('#question').append(newLi);
         console.log(question.answer[i]);
     }    
 };
 //setting up onclick function when user clicks on the choices
-$('#question ul').on('click','li', function() {
-    $('.clicked').removeClass('clicked');
-    $(this).addClass('clicked');
+$('#question').on('click','button', function() {
+   $('<button>').addClass('active');
+
+    $('<button>').submit()
+    
 });
 
 
 function checkAnswer() {
-    
+//  if (questions.correct === )   
 
 }
 function summary () {
