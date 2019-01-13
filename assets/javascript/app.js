@@ -23,14 +23,14 @@ var questions = [
 
 window.onload = function() {
   showQ();
-  $("#question button").on("click", function() {
-    $(this).addClass("clicked");
+    $("#question button").on("click", function() {
+    $().addClass("clicked");
     console.log($(this).attr("class"));
     var guess = $(this).text();
-    $(this).attr("data-val", question.correct);
+    $(this).attr("id");
     console.log(this);
-    console.log(guess);
-  });
+    // console.log(guess);
+    });
 };
 
 //--------------------functions-----------------------
@@ -44,15 +44,25 @@ function showQ() {
   //for loop to loop through the answer property of the chosen array. then append them to the li
   for (var i = 0; i < question.answer.length; i++) {
     var newLi = $(
-      '<button id=" ' + i + '">' + question.answer[i] + "</button>"
+      '<button id="button' + i + '">' + question.answer[i] + "</button>"
     );
     $("#question").append(newLi);
     console.log(question.answer[i]);
   }
-}
+};
 
-// //setting up onclick function when user clicks on the choices
-// $('#question button').on('click',  function() {
+
+// //setting up the submit function
+ $('.btn').on('click',  function() {
+  if($('button.clicked').length) {
+    //getting the id value of the button clicked via JQ attr
+    var userGuess = $('button.clicked').attr('id');
+     console.log(userGuess + ' line 60');
+  }else {
+    alert('pick an answer');
+  }
+});
+
 //    $(this).addClass('clicked');
 //    console.log($(this).attr('class'));
 //    var guess = $('button');
@@ -62,14 +72,9 @@ function showQ() {
 //    console.log(guess.attr('data-val'));
 // });
 
-function checkAnswer(guess) {
-  if (questions.correct == guess) {
-    alert("yes!");
-    console.log(guess);
-    wins++;
-    $("#wins").html("Wins: " + wins);
-  }
-}
+
+    
+
 
 function summary() {}
 //set the timers for 10 sec and the time's up
