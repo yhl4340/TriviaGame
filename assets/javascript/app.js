@@ -1,10 +1,10 @@
 //globals
-var wins = 0;
-var losses = 0;
+var correct= 0;
+var incorrect = 0;
 var score = 0;
 var timeRunning = 30;
 var currentQ = 0;
-var input = "";
+
 //setting the questions as an array
 var questions = [
   {
@@ -35,17 +35,19 @@ window.onload = function() {
 };
 
 //--------------------functions-----------------------
-//randomly pick a title from array and inserts the answers into the li
+//pick a title from array and inserts the answers into the li
 function showQ() {
-  var question = questions[Math.floor(Math.random() * questions.length)];
+  var question = questions[currentQ];
   $("#question button").hide();
   $("#question").html(question.title);
   console.log(question.title);
 
-  //for loop to loop through the answer property of the chosen array. then append them to the li
+  //for loop to loop through the answer property of the chosen array. then append them to the button
   for (var i = 0; i < question.answer.length; i++) {
-    var newLi = $('<button id="button ' + i + '">' + question.answer[i] + "</button>"
+  //creating new button with an id that i can use later.
+    var newLi = $('<button id="' + i + '">' + question.answer[i] + "</button>"
     );
+  //attaching the newli to the div w a question id
     $("#question").append(newLi);
     console.log(question.answer[i]);
   }
@@ -54,21 +56,34 @@ function showQ() {
 
 // //setting up the submit function
   $('.btn').on('click',  function() {
-
-//getting the id value of the button clicked via JQ attr
-    var userGuess = $('button.clicked').attr('id');
-    console.log(userGuess + ' line 58');
-    var isCorrect = false;
-    console.log('button'+ questions.correct);
-
-  if(userGuess == ('button'+ question.correct)) {
-  
-  alert ('yay');
     
-  }else {
-   
+//getting the id value of the button clicked via JQ attr
+//turning the str value into interger 
+    var userGuess = parseInt($('button.clicked').attr('id'));
+    console.log(userGuess + ' line58');
+//calling the check function to compare result
+    check(userGuess);
+    
+  });
+  
+  function check(userGuess){
+     
+    var question = questions[currentQ];
+    console.log(question.correct);
+    var isCorrect = false;
+    if(userGuess ==  question.correct) {
+      isCorrect = true;
+      correct++;
+      $('#correct').html('Correct: ' + correct);
+      return 'yay';
+  }else{
+    incorrect++;
+    $("#incorrect").html('Incorrect: ' + incorrect);
   }
-});
+//increment currenq outside of the if function becase the count continues whether or not if the user gets it right or not.
+  currentQ++;
+  showQ();
+};
 
 //    $(this).addClass('clicked');
 //    console.log($(this).attr('class'));
