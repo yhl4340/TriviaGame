@@ -39,7 +39,7 @@ window.onload = function() {
 function showQ() {
   var question = questions[currentQ];
   $("#question button").hide();
-  $("#question").html(question.title);
+  $("h2").html(question.title);
   console.log(question.title);
 
   //for loop to loop through the answer property of the chosen array. then append them to the button
