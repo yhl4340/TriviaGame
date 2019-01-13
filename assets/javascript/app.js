@@ -24,11 +24,12 @@ var questions = [
 window.onload = function() {
   showQ();
     $("#question button").on("click", function() {
-    $().addClass("clicked");
-    console.log($(this).attr("class"));
-    var guess = $(this).text();
-    $(this).attr("id");
-    console.log(this);
+    $(this).addClass("clicked");
+      console.log($(this).attr("class"));
+
+    // var guess = $(this).text();
+    // $(this).attr("data-val", question.correct);
+    // console.log(this);
     // console.log(guess);
     });
 };
@@ -37,14 +38,13 @@ window.onload = function() {
 //randomly pick a title from array and inserts the answers into the li
 function showQ() {
   var question = questions[Math.floor(Math.random() * questions.length)];
-  $("#question ul").hide();
+  $("#question button").hide();
   $("#question").html(question.title);
   console.log(question.title);
 
   //for loop to loop through the answer property of the chosen array. then append them to the li
   for (var i = 0; i < question.answer.length; i++) {
-    var newLi = $(
-      '<button id="button' + i + '">' + question.answer[i] + "</button>"
+    var newLi = $('<button id="button ' + i + '">' + question.answer[i] + "</button>"
     );
     $("#question").append(newLi);
     console.log(question.answer[i]);
@@ -53,13 +53,20 @@ function showQ() {
 
 
 // //setting up the submit function
- $('.btn').on('click',  function() {
-  if($('button.clicked').length) {
-    //getting the id value of the button clicked via JQ attr
+  $('.btn').on('click',  function() {
+
+//getting the id value of the button clicked via JQ attr
     var userGuess = $('button.clicked').attr('id');
-     console.log(userGuess + ' line 60');
+    console.log(userGuess + ' line 58');
+    var isCorrect = false;
+    console.log('button'+ questions.correct);
+
+  if(userGuess == ('button'+ question.correct)) {
+  
+  alert ('yay');
+    
   }else {
-    alert('pick an answer');
+   
   }
 });
 
