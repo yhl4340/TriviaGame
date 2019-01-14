@@ -4,6 +4,7 @@ var incorrect = 0;
 var score = 0;
 var timeRunning = 30;
 var currentQ = 0;
+var intervalId;
 
 //setting the questions as an array
 var questions = [
@@ -20,12 +21,15 @@ var questions = [
     correct: 1
   }
 ];
+var toStart = alert('any key');
 
 window.onload = function() {
   showQ();
+  $('#question button').on('click', run);
     $("#question button").on("click", function() {
     $(this).addClass("clicked");
       console.log($(this).attr("class"));
+      
 
     // var guess = $(this).text();
     // $(this).attr("data-val", question.correct);
@@ -79,22 +83,24 @@ function showQ() {
   }else{
     incorrect++;
     $("#incorrect").html('Incorrect: ' + incorrect);
+    $("#frame").show();
+    // $('<iframe src="https://giphy.com/embed/SXCQWrsob9TGg" frameBorder="0" class="giphy-embed" id="myFrame"></iframe>').show();
   }
 //increment currenq outside of the if function becase the count continues whether or not if the user gets it right or not.
   currentQ++;
   showQ();
 };
 
-//    $(this).addClass('clicked');
-//    console.log($(this).attr('class'));
-//    var guess = $('button');
-//    guess.addClass('clicked');
-//    guess.attr('data-val', question.correct);
+//function for timer
+function run(){
+  intervalId= setInterval(decrement,1000)
+};
 
-//    console.log(guess.attr('data-val'));
-// });
-
-
+function decrement(){
+  timeRunning--;
+  
+  $('#time-remaining').html('Time remaining: ' + timeRunning);
+};
     
 
 
