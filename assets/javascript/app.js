@@ -1,4 +1,4 @@
-//globals
+// globals
 var correct= 0;
 var incorrect = 0;
 var score = 0;
@@ -6,7 +6,7 @@ var timeRunning = 30;
 var currentQ = 0;
 var intervalId;
 
-//setting the questions as an array
+// setting the questions as an array
 var questions = [
   {
     title:
@@ -21,7 +21,6 @@ var questions = [
     correct: 1
   }
 ];
-var toStart = alert('any key');
 
 window.onload = function() {
   showQ();
@@ -39,37 +38,37 @@ window.onload = function() {
 };
 
 //--------------------functions-----------------------
-//pick a title from array and inserts the answers into the li
+// pick a title from array and inserts the answers into the li
 function showQ() {
   var question = questions[currentQ];
   $("#question button").hide();
+  // prints quetion to h2
   $("h2").html(question.title);
   console.log(question.title);
 
-  //for loop to loop through the answer property of the chosen array. then append them to the button
+  // for loop to loop through the answer property of the chosen array. then append them to the button
   for (var i = 0; i < question.answer.length; i++) {
-  //creating new button with an id that i can use later.
+    // creating new button with an id that i can use later.
     var newLi = $('<button id="' + i + '">' + question.answer[i] + "</button>"
     );
-  //attaching the newli to the div w a question id
+    // attaching the newli to the div w a question id
     $("#question").append(newLi);
     console.log(question.answer[i]);
   }
 };
 
-
-// //setting up the submit function
-  $('.btn').on('click',  function() {
+// setting up the submit function
+$('.btn').on('click',  function() {
     
-//getting the id value of the button clicked via JQ attr
-//turning the str value into interger 
-    var userGuess = parseInt($('button.clicked').attr('id'));
-    console.log(userGuess + ' line58');
-//calling the check function to compare result
-    check(userGuess);
-    
+  // getting the id value of the button clicked via JQ attr
+  // turning the str value into interger 
+  var userGuess = parseInt($('button.clicked').attr('id'));
+  console.log(userGuess + ' line58');
+  // calling the check function to compare result
+  check(userGuess); 
   });
-  
+
+//----------------------function to check guess
   function check(userGuess){
      
     var question = questions[currentQ];
@@ -83,29 +82,44 @@ function showQ() {
   }else{
     incorrect++;
     $("#incorrect").html('Incorrect: ' + incorrect);
-    $("#frame").show();
+    $('.gif').show();
+    // $("#frame").show(); //??????????????? not working
     // $('<iframe src="https://giphy.com/embed/SXCQWrsob9TGg" frameBorder="0" class="giphy-embed" id="myFrame"></iframe>').show();
+   
+
+
   }
 //increment currenq outside of the if function becase the count continues whether or not if the user gets it right or not.
   currentQ++;
   showQ();
 };
 
-//function for timer
+//------------------------function for timer
+// the run function sets the timer interval at 1 second decrement
 function run(){
   intervalId= setInterval(decrement,1000)
 };
-
+// the decrement function decreses timeRunning by 1 interval and prints to dom
 function decrement(){
   timeRunning--;
-  
   $('#time-remaining').html('Time remaining: ' + timeRunning);
 };
     
 
-
 function summary() {}
 //set the timers for 10 sec and the time's up
+
+if(timeRunning=== 0){
+  if(correct > incorrect){
+    alert ('Awesome!');
+  }else {
+    alert ('Try again');
+  }
+}
+$('#correct').html(correct);
+$('#incorrect').html(incorrect);
+$('#total').html('You scored '+ correct + 'out of '+ 5);
+
 
 //  ==========================================instructions======================
 
