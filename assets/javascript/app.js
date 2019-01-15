@@ -2,7 +2,7 @@
 var correct= 0;
 var incorrect = 0;
 var score = 0;
-var timeRunning = 30;
+var timeRunning = 10;
 var currentQ = 0;
 var intervalId;
 
@@ -12,14 +12,26 @@ var questions = [
     title:
       "*The character of this movie enters the Land of the  Dead to seek blessing from his grandfather? ",
     answer: ["Finding Nemo", "Moana", "Coco", "Wall E"],
-    correct: 2
-  },
+    correct: 2,
+  //   imageRight: src='assets/images/giphy.gif',
+  //   imageWrong: src = 'assets/images/test(1).gif'
+   },
   {
     title:
       "This dad sets out on a journey to bring his son home after his son is taken from the Great Reef to Sydney.",
     answer: ["Coco", "Finding Nemo", "Up", "Zootopia"],
-    correct: 1
+    correct: 1,
+    // imageRight: src='assets/images/nemo1.gif',
+    // imageWrong: src = 'assets/images/Nemo.gif'
   }
+];
+var imageRight= [
+ "<img src = 'assets/images/nemo1.gif'>",
+  "<img src = 'assets/images/giphy.gif'>"
+];
+var imageWrong = [
+  'assets/images/Nemo.gif',
+  'assets/images/test(1).gif'
 ];
 
 window.onload = function() {
@@ -29,11 +41,6 @@ window.onload = function() {
     $(this).addClass("clicked");
       console.log($(this).attr("class"));
       
-
-    // var guess = $(this).text();
-    // $(this).attr("data-val", question.correct);
-    // console.log(this);
-    // console.log(guess);
     });
 };
 
@@ -66,6 +73,7 @@ $('.btn').on('click',  function() {
   console.log(userGuess + ' line58');
   // calling the check function to compare result
   check(userGuess); 
+  decrement();
   });
 
 //----------------------function to check guess
@@ -74,15 +82,17 @@ $('.btn').on('click',  function() {
     var question = questions[currentQ];
     console.log(question.correct);
     var isCorrect = false;
+    var imgRight = imageRight[Math.floor(Math.random() * imageRight.length)];
     if(userGuess ==  question.correct) {
       isCorrect = true;
       correct++;
       $('#correct').html('Correct: ' + correct);
+      $('#img-right').show(imgRight);
       return 'yay';
   }else{
     incorrect++;
     $("#incorrect").html('Incorrect: ' + incorrect);
-    $('.gif').show();
+    $('#img-lost').show(imageWrong);
     // $("#frame").show(); //??????????????? not working
     // $('<iframe src="https://giphy.com/embed/SXCQWrsob9TGg" frameBorder="0" class="giphy-embed" id="myFrame"></iframe>').show();
    
@@ -104,7 +114,14 @@ function decrement(){
   timeRunning--;
   $('#time-remaining').html('Time remaining: ' + timeRunning);
 };
-    
+$('#reset2').on('click',function(){
+
+  clearInterval = intervalId;
+
+});
+
+
+
 
 function summary() {}
 //set the timers for 10 sec and the time's up
