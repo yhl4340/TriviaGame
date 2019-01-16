@@ -51,6 +51,7 @@ function showQ() {
   $("h2").html(question.title);
   console.log(question.title);
 
+
   // for loop to loop through the answer property of the chosen array. then append them to the button
   for (var i = 0; i < question.answer.length; i++) {
     // creating new button with an id that i can use later.
@@ -58,8 +59,17 @@ function showQ() {
     // attaching the newli to the div w a question id
     $("#question").append(newLi);
     console.log(question.answer[i]);
-  }
-}
+  };
+
+  
+
+};
+
+  if (currentQ >= questions.length) {
+      summary();
+    } else {
+      showQ();
+  };
 
 // setting up the submit function
 $(".btn").on("click", function() {
@@ -87,20 +97,23 @@ function check(userGuess) {
 
     $("#img-right").html(imgRight);
     return "yay";
+  }
+  currentQ++;
+  if (currentQ >= questions.length) {
+    summary();
   } else {
-    incorrect++;
-   
+    showQ();
   };
 
 
   //increment currenq outside of the if function becase the count continues whether or not if the user gets it right or not.
   //if run out of questions, then show summary, otherwise, shown next question
-  currentQ++;
+ 
   // if (currentQ >= questions.length) {
   //   stop();
   //   summary();
   // } else {
-    showQ();
+   
   };
   //================question. i had to put currentq and show q in the if condition for the next q to load. why???????????
 
@@ -124,18 +137,24 @@ function stop(){
 
 //----------------------------------------------------
 function summary() {
-  $("#wapper").hide();
+  stop();
+  $("#wrapper").hide();
+  $("#summary").show();
   //set the timers for 10 sec and the time's up
   if (correct > incorrect) {
-    alert("Awesome!");
+    $('#correct-text').html('You are awesome!').css('text-align','center');
   } else {
     alert("Try again");
   };
-
-  $("#correct").text(correct);
-  $("#incorrect").text(incorrect);
+  
+  $("#correct").html('Correct guess: ' + correct + ' : ');
+  $("#incorrect").html('Incorrect guess: ' + incorrect + ' : ');
   $("#total").html("You scored " + correct + "out of " + questions.length);
+  
 };
+
+
+
 
 //  ==========================================instructions======================
 
@@ -145,4 +164,4 @@ function summary() {
 // --If the player runs out of time, tell the player that time's up and display the correct answer. Wait a few seconds, then show the next question.
 // If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer. Wait a few seconds, then show the next question.
 
-// --On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
+// --On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page)

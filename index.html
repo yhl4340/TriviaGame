@@ -1,103 +1,99 @@
 <!DOCTYPE html>
-<html lang='en-us'>
-<head>
-<meta charset="UTF-8">
-<title>Trivia Game</title>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trivia Game</title>
 
-<!-- style sheets -->
-        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- style sheets -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 
-<style>
-    h2{
-        font-size:26px;
-    }
-    #question li {
-        list-style:none;
+    <style>
+      h2 {
+        font-size: 26px;
+      }
+      #question li {
+        list-style: none;
         cursor: pointer;
         display: none;
-    }
-   button .clicked {
+      }
+      button .clicked {
         background: red;
-    }
-    #question button {
+      }
+      #question button {
         display: block;
         width: 30%;
         text-align: left;
-    }
-    #question button:focus{
-        background:yellow;
-    }
-     #question button:hover {
+      }
+      #question button:focus {
+        background: yellow;
+      }
+      #question button:hover {
         background: green;
-    } 
-    .gif {
+      }
+      .gif {
         display: none;
-    }
-    #img-right, #img-lost{
-        width:400px;
-        height:200px;
+      }
+      #img-right,
+      #img-lost {
+        width: 400px;
+        height: 200px;
         display: none;
-
-    }
-</style>
-    
-</head>
-<body>
+      }
+      #correct-text {
+        border: 3px green dotted;
+        border-radius: 8px;
+        font-size: 50px;
+        margin: 0 auto;
+        width:550px;
+        height: 150px;
+      }
+     
+    </style>
+  </head>
+  <body>
     <div class="container-fluid">
-        <div class="jumbotron">Trivia Game</div>
-        <div id='wrapper'>
-            <div id='time-remaining'>Time Remaining: 10</div>
-            <h2>Question Title</h2>
-            <div id='question'>
-                <ul>
-                    <li>op1</li>
-                    <li>op2</li>
-                    <li>op3</li>
-                    <li>op4</li>
-                </ul>
-            </div>
-            <button class="btn btn-primary" id='reset2' type="submit" >submit</button>
+      <div class="jumbotron">Trivia Game</div>
+      <div id="wrapper">
+        <div id="time-remaining">Time Remaining: 10</div>
+        <h2>Question Title</h2>
+        <div id="question">
+          <ul>
+            <li>op1</li>
+            <li>op2</li>
+            <li>op3</li>
+            <li>op4</li>
+          </ul>
         </div>
+        <button class="btn btn-primary" id="reset2" type="submit">
+          submit
+        </button>
+      </div>
 
-        
-        
-        <div id='summary'>Results
-            <button class="btn btn-warning" type='reset'>Reset</button>
+      <div id="summary">
+        <button class="btn btn-warning" type="reset">Reset</button>
 
-               <!-- <img class='gif' src='assets/images/giphy.gif'> -->
-            
-                <!-- <iframe src="https://giphy.com/embed/SXCQWrsob9TGg" width="429" height="480" frameBorder="0" class="giphy-embed" id='myFrame' allowFullScreen></iframe>
-                <p>
-                    <a id='frame' href="https://giphy.com/gifs/disney-pixar-sadness-SXCQWrsob9TGg">GIPHY</a>
-                </p> -->
+        <div id="correct-text"></div>
+        <p id="correct"></p>
+        <div id="incorrect-text"></div>
+        <p id="incorrect"></p>
+        <div id="total"></div>
+        <div id="win"></div>
+        <div id="lost"></div>
+        <div id="img-right" style="border:2px red dotted;"></div>
+        <img id="img-lost" />
+      </div>
+    </div>
 
-            <div id='correct'>Correct</div>
-            <div id='incorrect'>Incorrect</div>
-            <div id='total'></div>
-            <div id='win'></div>
-            <div id='lost'></div>
-            <div id='img-right' style ="border:2px red dotted;"></div>
-            <img id='img-lost'>
-        </div>
-           
-       
-        
-    </div> 
-
-
-
-<!-- ==========================================instructions======================
-
---You'll create a trivia game that shows only one question until the player answers it or their time runs out.
-If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, display the next question -- do this without user input.
-
---If the player runs out of time, tell the player that time's up and display the correct answer. Wait a few seconds, then show the next question.
-If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer. Wait a few seconds, then show the next question.
-
---On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page). -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script type="text/javascript" src="assets/javascript/app.js"></script>
-</body>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
+    <!-- //JS -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+  </body>
 </html>
