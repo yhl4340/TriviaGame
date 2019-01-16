@@ -144,7 +144,8 @@ function summary() {
   if (correct > incorrect) {
     $('#correct-text').html('You are awesome!').css('text-align','center');
   } else {
-    alert("Try again");
+    $('#incorrect-text').html('Sorry').css('text-align','center');
+ 
   };
   
   $("#correct").html('Correct guess: ' + correct + ' : ');

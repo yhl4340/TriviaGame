@@ -58,6 +58,7 @@
   <body>
     <div class="container-fluid">
       <div class="jumbotron">Trivia Game</div>
+      
       <div id="wrapper">
         <div id="time-remaining">Time Remaining: 10</div>
         <h2>Question Title</h2>
@@ -69,14 +70,10 @@
             <li>op4</li>
           </ul>
         </div>
-        <button class="btn btn-primary" id="reset2" type="submit">
-          submit
-        </button>
+        <button class="btn btn-primary" type="submit">submit</button>
       </div>
 
       <div id="summary">
-        <button class="btn btn-warning" type="reset">Reset</button>
-
         <div id="correct-text"></div>
         <p id="correct"></p>
         <div id="incorrect-text"></div>
@@ -86,7 +83,9 @@
         <div id="lost"></div>
         <div id="img-right" style="border:2px red dotted;"></div>
         <img id="img-lost" />
-      </div>
+        <button class="btn btn-warning" type="reset">Reset</button>
+       </div>
+
     </div>
 
     <script
