@@ -26,9 +26,9 @@ var questions = [
   }
 ];
 
-var imageRight = ["assets/images/nemo1.gif", "assets/images/test(1).gif"];
-var imgRight = imageRight[Math.floor(Math.random() * imageRight.length)];
-var imageWrong = ["assets/images/Nemo.gif", "assets/images/giphy.gif"];
+// var imageRight = ["assets/images/nemo1.gif", "assets/images/test(1).gif"];
+// var imgRight = imageRight[Math.floor(Math.random() * imageRight.length)];
+// var imageWrong = ["assets/images/Nemo.gif", "assets/images/giphy.gif"];
 
 
 
@@ -78,16 +78,18 @@ if (currentQ >= questions.length) {
 
 // setting up the submit function
 $(".btn").on("click", function() {
+
   // getting the id value of the button clicked via JQ attr
   // turning the str value into interger
-  // var userGuess = parseInt($("button.clicked").attr("id"));
   var userGuess = parseInt($("button.clicked").attr("data-id"));
   console.log(userGuess + " line58");
   // calling the check function to compare result
   check(userGuess);
   decrement();
+  
 });
 
+$('.btn').on('click', resetClock);
 //----------------------function to check guess
 function check(userGuess) {
   var question = questions[currentQ];
@@ -98,36 +100,50 @@ function check(userGuess) {
     correct++;
     console.log("correct:?? " + correct);
 
-    $("#img").append(question.imgRight);
+    $("#img").append(this.question.imageRight + ('ok'));
   }
+  //increment currenq outside of the if function becase the count continues whether or not if the user gets it right or not.
+  //if run out of questions, then show summary, otherwise, show next question
   currentQ++;
   if (currentQ >= questions.length) {
     summary();
   } else {
     showQ();
   }
-
-  //increment currenq outside of the if function becase the count continues whether or not if the user gets it right or not.
-  //if run out of questions, then show summary, otherwise, show next question
-}
-// ??????????questions. i had to put currentq and show q in the if condition for the next q to load. why???????????
-// putting the if after the for loops gave me in infinite loop. why???
-
+};
 //------------------------function for timer
 // the run function sets the timer interval at 1 second decrement
 function run() {
   intervalId = setInterval(decrement, 1000);
   clockRunning = true;
+ 
 }
 // the decrement function decreses timeRunning by 1 interval and prints to dom
 function decrement() {
+  
   timeRunning--;
   $("#time-remaining").html("Time remaining: " + timeRunning);
-}
+   if(timeRunning == 0){
+     clearInterval(intervalId);
+     clockRunning= false;
+    //  alert ('Time Out!');
+    //  $("#time-out").text("Time Out")
+    //  .css("text-align", "center").show(); THIS IS NOT WORKING
+   }
+};
+
 function stop() {
   clearInterval(intervalId);
   clockRunning = false;
 }
+function resetClock () {
+
+  $("#time-remaining").empty();
+  decrement();
+};
+
+
+
 
 //----------------------------------------------------
 function summary() {
@@ -139,6 +155,7 @@ function summary() {
     $("#summary-text")
       .html("You are awesome!")
       .css("text-align", "center");
+      // $("#img").append(question.imageRight + ('ok'));
   } else {
     $("#summary-text")
       .html("Sorry")
