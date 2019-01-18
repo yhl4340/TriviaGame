@@ -38,13 +38,18 @@
       .gif {
         display: none;
       }
-      #correct-text {
+      #summary-text {
         border: 3px green dotted;
         border-radius: 8px;
         font-size: 50px;
         margin: 0 auto;
         width:550px;
         height: 150px;
+      }
+      #img {
+        width:500px;
+        height: 200px;
+        margin:0 auto;
       }
      
     </style>
@@ -57,20 +62,17 @@
         <div id="time-remaining">Time Remaining: 10</div>
         <h2>Question Title</h2>
         <div id="question">
-          <ul>
-            <li>op1</li>
-            <li>op2</li>
-            <li>op3</li>
-            <li>op4</li>
-          </ul>
+          
+          
+          
         </div>
         <button class="btn btn-primary" type="submit">submit</button>
       </div>
 
       <div id="summary">
-        <div id="correct-text"></div>
+        <div id="summary-text"></div>
         <p id="correct"></p>
-        <div id="incorrect-text"></div>
+        
         <p id="incorrect"></p>
         <div id="total"></div>
         <div id="win"></div>
