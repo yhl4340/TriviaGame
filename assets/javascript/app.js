@@ -2,7 +2,7 @@
 var correct = 0;
 var incorrect = 0;
 var score = 0;
-var timeRunning = 10;
+var timeRunning = 30;
 var currentQ = 0;
 var intervalId;
 var clockRunning = false;
@@ -26,50 +26,61 @@ var questions = [
   },
   {title:
     "In a city of anthropomorphic animals, a rookie bunny cop and a cynical con artist fox must work together to uncover a conspiracy.",
-    answer:['Zootopia',],
-    correct:0
+    answer:['Wall E','Mulan','Cars','Zootopia',],
+    correct:3,
   },
   {title:
     "A video game villain wants to be a hero and sets out to fulfill his dream, but his quest brings havoc to the whole arcade where he lives.",
-    answer:['Wreck-it Ralph',],
-    correct:0
+    answer:['Wreck-it Ralph','Cars', ' Monsters Inc', 'Toy Story'],
+    correct:0,
   },
   {title:
     "A family of superheroes try to restore the public's trust in superheros while trying to balance their family life as well.",
-    answer:['The Incredibles',],
-    correct:0
+    answer:['Finding Nemo','The Incredibles','Toy Story','Bolt'],
+    correct:1,
   },
   {title:
-    "A teenage girl who is uprooted from her Midwest family live struggles to adjust to the new life. Turmoils ensue in the Headquarters where the emotions live.",
-    answer:['Inside out',],
-    correct:0
+    "An elderly widower meets an earnest boy named Russell. By tying thousands of balloons to his house, Carl sets out to fulfill his dream to see the wilds of South America and complete a promise made to his late wife, Ellie. T",
+    answer:['Inside out','Up','Bolt','Ponyo'],
+    correct:1,
   },
   {title:
     "In this film, a young robotics prodigy forms a superhero team to combat a masked villain",
-    answer:['Big Hero 6'],
-    correct:0,
+    answer:['Inside Out','Up','Big Hero 6','Moana'],
+    correct:2,
   },
   {title:
     " When two monsters employed at the factory that generates power by scaring human children find a small child at the factory, they must return her home before it is too late.",
-    answer:['The Monsters Inc'],
-    correct:0,
+    answer:['Zootopia','Up','Big Hero 6','The Monsters Inc'],
+    correct:3,
   },
   {title:
     "When an anthropomorphic rat who is interested in cooking befriends a young garbage boy, they embark on amazing culinary journey",
-    answer:['Ratatouille'],
+    answer:['Ratatouille','Wall E', 'Toy Story','Tangled'],
     correct:0,
   },
   {title:
     "A solitary trash compactor robot on a future deserted Earth, left to clean up garbage. However, he is visited by a probe sent by the starship Axiom, whom he falls in love with and pursues across the galaxy.",
-    answer:['Wall E'],
-    correct:0,
+    answer:['The incredibles','Wall E','Cars','Coco'],
+    correct:1,
   }
 
 ];
 
- var imageRight = ["<img src='assets/images/nemo1.gif'>", "<img src='assets/images/test.gif'>"];
+ var imageRight = [
+   "<img src='assets/images/nemo1.gif'>", 
+   "<img src='assets/images/test.gif'>",
+   "<img src='assets/images/yes1.gif'>",
+   "<img src='assets/images/yes.gif'>"
+  ];
  var imgRight = imageRight[Math.floor(Math.random() * imageRight.length)];
- var imageWrong = ["<img src='assets/images/no1.gif'>", "<img src='assets/images/giphy.gif'>"];
+ var imageWrong = [
+   "<img src='assets/images/no1.gif'>",
+   "<img src='assets/images/giphy.gif'>",
+   "<img src='assets/images/no.gif'>",
+   "<img src='assets/images/no1.gif'>",
+   "<img src='assets/images/no3.gif'>"
+  ];
  var imgWrong = imageWrong[Math.floor(Math.random() * imageWrong.length)];
 
 
