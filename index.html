@@ -13,8 +13,18 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 
     <style>
+      *{
+        font-size:18px;
+      }
+      .jumbotron {
+        background: #006e90;
+        font-size: 34px;
+        text-align: center;
+        color: #99c24d;
+      }
       h2 {
         font-size: 26px;
+        margin:auto auto 20px auto;
       }
       button .clicked {
         background: red;
@@ -36,17 +46,40 @@
       #summary-text {
         border: 3px green dotted;
         border-radius: 8px;
-        font-size: 50px;
+        font-size: 40px;
         margin: 0 auto;
         width:550px;
-        height: 150px;
+        height: 100px;
       }
-      #img {
-        width:500px;
-        height: 200px;
+      img {
+        object-position: cover;
+        width:18%;
+        height: 10%;
         margin:0 auto;
+        margin-top:30px;
+        margin-left:600px;
       }
-     
+      #wrapper {
+        margin:0 auto;
+        text-align: center;
+        background:#f18f01;
+        width:75%;
+        padding-bottom:30px;
+        
+      }
+      #summary {
+        margin: 0 auto;
+      }
+     button {
+      margin:0 auto;
+      margin-top:5px;
+      border-radius: 3px;
+     }
+     button.btn {
+       margin-top:30px;
+       margin:0 auto;
+       text-align: center;
+     }
     </style>
   </head>
   <body>
@@ -57,11 +90,9 @@
         <div id="time-remaining">Time Remaining: 10</div>
         <h2>Question Title</h2>
         <div id="question">
-          
-          
-          
-        </div>
-        <button class="btn btn-primary" type="submit">submit</button>
+        <p id="text"></p>
+      </div>
+        <button class="btn btn-primary align-self-center" style="margin-top:15px" type="submit">submit</button>
       </div>
 
       <div id="summary">
@@ -73,11 +104,11 @@
         <div id="time-out"></div>
         <div id="win"></div>
         <div id="lost"></div>
-        <div id="img" style="border:2px red dotted;"></div>
+        
         
         <button id="reset" class="btn btn-warning" type="reset" >Reset</button>
-       </div>
-
+      </div>
+      <div id="img" style="border:2px red dotted;"></div>
     </div> 
 
     <script

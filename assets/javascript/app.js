@@ -13,28 +13,71 @@ var questions = [
       "*The character of this movie enters the Land of the  Dead to seek blessing from his grandfather? ",
     answer: ["Finding Nemo", "Moana", "Coco", "Wall E"],
     correct: 2,
-    imageRight: "assets/images/giphy.gif",
-    imageWrong: "assets/images/test(1).gif"
+    // imageRight: "assets/images/giphy.gif",
+    // imageWrong: "assets/images/test(1).gif"
   },
   {
     title:
       "This dad sets out on a journey to bring his son home after his son is taken from the Great Reef to Sydney.",
     answer: ["Coco", "Finding Nemo", "Up", "Zootopia"],
     correct: 1,
-    imageRight: "assets/images/nemo1.gif",
-    imageWrong: "assets/images/Nemo.gif"
+    // imageRight: "assets/images/nemo1.gif",
+    // imageWrong: "assets/images/Nemo.gif"
+  },
+  {title:
+    "In a city of anthropomorphic animals, a rookie bunny cop and a cynical con artist fox must work together to uncover a conspiracy.",
+    answer:['Zootopia',],
+    correct:0
+  },
+  {title:
+    "A video game villain wants to be a hero and sets out to fulfill his dream, but his quest brings havoc to the whole arcade where he lives.",
+    answer:['Wreck-it Ralph',],
+    correct:0
+  },
+  {title:
+    "A family of superheroes try to restore the public's trust in superheros while trying to balance their family life as well.",
+    answer:['The Incredibles',],
+    correct:0
+  },
+  {title:
+    "A teenage girl who is uprooted from her Midwest family live struggles to adjust to the new life. Turmoils ensue in the Headquarters where the emotions live.",
+    answer:['Inside out',],
+    correct:0
+  },
+  {title:
+    "In this film, a young robotics prodigy forms a superhero team to combat a masked villain",
+    answer:['Big Hero 6'],
+    correct:0,
+  },
+  {title:
+    " When two monsters employed at the factory that generates power by scaring human children find a small child at the factory, they must return her home before it is too late.",
+    answer:['The Monsters Inc'],
+    correct:0,
+  },
+  {title:
+    "When an anthropomorphic rat who is interested in cooking befriends a young garbage boy, they embark on amazing culinary journey",
+    answer:['Ratatouille'],
+    correct:0,
+  },
+  {title:
+    "A solitary trash compactor robot on a future deserted Earth, left to clean up garbage. However, he is visited by a probe sent by the starship Axiom, whom he falls in love with and pursues across the galaxy.",
+    answer:['Wall E'],
+    correct:0,
   }
+
 ];
 
-// var imageRight = ["assets/images/nemo1.gif", "assets/images/test(1).gif"];
-// var imgRight = imageRight[Math.floor(Math.random() * imageRight.length)];
-// var imageWrong = ["assets/images/Nemo.gif", "assets/images/giphy.gif"];
+ var imageRight = ["<img src='assets/images/nemo1.gif'>", "<img src='assets/images/test.gif'>"];
+ var imgRight = imageRight[Math.floor(Math.random() * imageRight.length)];
+ var imageWrong = ["<img src='assets/images/no1.gif'>", "<img src='assets/images/giphy.gif'>"];
+ var imgWrong = imageWrong[Math.floor(Math.random() * imageWrong.length)];
 
 
 
 window.onload = function() {
   $("#summary").hide();
   $("#reset").hide();
+  $("#img").hide();
   showQ();
   //on click, the run function starts the clock
   $("#question button").on("click", run);
@@ -70,49 +113,66 @@ function showQ() {
     }
 };
 
-if (currentQ >= questions.length) {
-  summary();
-} else {
-  showQ();
-}
+// if (currentQ >= questions.length) {
+//   summary();
+// } else {
+//   showQ()
 
 // setting up the submit function
 $(".btn").on("click", function() {
-
+  
   // getting the id value of the button clicked via JQ attr
   // turning the str value into interger
   var userGuess = parseInt($("button.clicked").attr("data-id"));
   console.log(userGuess + " line58");
   // calling the check function to compare result
+ 
   check(userGuess);
   decrement();
+  // fiveSecond();
+
   
 });
 
-$('.btn').on('click', resetClock);
 //----------------------function to check guess
 function check(userGuess) {
-  var question = questions[currentQ];
-  console.log(question);
 
-  console.log(userGuess + " == " + question.correct);//aaron's way to check code.
-  if (userGuess == question.correct) {
-    correct++;
-    console.log("correct:?? " + correct);
-
-    $("#img").append(this.question.imageRight + ('ok'));
-  }
+    var question = questions[currentQ];
+    console.log(userGuess + " == " + question.correct);//aaron's way to check code.
+   
+    
+    if (userGuess == question.correct) {
+      correct++;
+      
+      // $('#text').text('<p>' + 'yes' + '</p> ').show();---------not working
+      // console.log($('#text').html('Yes!, it was the right answer!').show());
+      // $('#img').append(question.imageRight);
+  
+    } else {
+      $('#text').html('Nope!, it was the ' + question.correct).show();
+    };
   //increment currenq outside of the if function becase the count continues whether or not if the user gets it right or not.
   //if run out of questions, then show summary, otherwise, show next question
-  currentQ++;
-  if (currentQ >= questions.length) {
-    summary();
-  } else {
-    showQ();
-  }
-};
+      currentQ++;
+      if (currentQ >= questions.length) {
+        summary();
+      } else {
+        // setTimeout(fiveSecond,5000);
+        showQ();
+      };
+      
+  };
+      
+  
 //------------------------function for timer
 // the run function sets the timer interval at 1 second decrement
+// setTimeout(fiveSecond,1000*5);
+
+// function fiveSecond (){
+//  summary();
+
+// }
+
 function run() {
   intervalId = setInterval(decrement, 1000);
   clockRunning = true;
@@ -123,27 +183,21 @@ function decrement() {
   
   timeRunning--;
   $("#time-remaining").html("Time remaining: " + timeRunning);
-   if(timeRunning == 0){
+   if(timeRunning === 0){
      clearInterval(intervalId);
      clockRunning= false;
-    //  alert ('Time Out!');
-    //  $("#time-out").text("Time Out")
+    
+     $("#time-out").show().text("Time Out");
+     
     //  .css("text-align", "center").show(); THIS IS NOT WORKING
-   }
+   };
 };
 
 function stop() {
   clearInterval(intervalId);
   clockRunning = false;
-}
-function resetClock () {
-
   $("#time-remaining").empty();
-  decrement();
 };
-
-
-
 
 //----------------------------------------------------
 function summary() {
@@ -155,19 +209,20 @@ function summary() {
     $("#summary-text")
       .html("You are awesome!")
       .css("text-align", "center");
-      // $("#img").append(question.imageRight + ('ok'));
+      $("#img").append(imgRight).show();
   } else {
     $("#summary-text")
       .html("Sorry")
       .css("text-align", "center");
-  }
+      $("#img").append(imgWrong).show();
+   };
 
   $("#correct").html("Correct guess: " + correct + " : ");
   $("#incorrect").html("Incorrect guess: " + incorrect + " : ");
   $("#total").html(
-    "You got" + correct + "out of " + questions.length + " correct! "
-  );
-}
+    "You got " + correct + "out of " + questions.length + " correct! ");
+
+};
 
 //  ==========================================instructions======================
 
