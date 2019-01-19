@@ -10,20 +10,26 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
+    <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 
     <style>
       *{
-        font-size:18px;
+        font-size:20px;
+        font-family: 'Mouse Memoirs', sans-serif;
       }
       .jumbotron {
         background: #006e90;
-        font-size: 34px;
+        font-size: 50px;
         text-align: center;
         color: #99c24d;
       }
+      body {
+        background-image: url('assets/images/disney-pixar.jpg');
+      }
+
       h2 {
-        font-size: 26px;
+        font-size: 36px;
         margin:auto auto 20px auto;
       }
       button .clicked {
@@ -39,9 +45,6 @@
       }
       #question button:hover {
         background: green;
-      }
-      .gif {
-        display: none;
       }
       #summary-text {
         border: 3px green dotted;
@@ -63,15 +66,16 @@
         margin:0 auto;
         text-align: center;
         background:#f18f01;
-        width:75%;
+        width:60%;
         padding-bottom:30px;
+        border-radius: 5px;
         
       }
       #summary {
         margin:0 auto;
         text-align: center;
         background:#f18f01;
-        width:75%;
+        width:55%;
         padding-bottom:15px;
         padding-top:15px;
         
@@ -93,7 +97,7 @@
       <div class="jumbotron">Basic Disney Trivia Game</div>
 
       <div id="wrapper">
-        <div id="time-remaining">Time Remaining: 10</div>
+        <div id="time-remaining" style="font-size:22px;">Time Remaining: 10</div>
         <h2>Question Title</h2>
         <div id="question">
         <p id="text"></p>
@@ -113,6 +117,7 @@
         
         <button id="reset" class="btn btn-warning" type="reset" >Reset</button>
       </div>
+      <!-- placehold for all images -->
       <div id="img" style="border:2px red dotted;"></div>
     </div> 
 
