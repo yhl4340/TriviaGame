@@ -127,11 +127,6 @@ function showQ() {
     }
 };
 
-// if (currentQ >= questions.length) {
-//   summary();
-// } else {
-//   showQ()
-
 // setting up the submit function
 $(".btn").on("click", function() {
   
@@ -143,8 +138,7 @@ $(".btn").on("click", function() {
  
   check(userGuess);
   decrement();
-  // fiveSecond();
-
+  
   
 });
 
@@ -157,11 +151,7 @@ function check(userGuess) {
     
     if (userGuess == question.correct) {
       correct++;
-      
-      // $('#text').text('<p>' + 'yes' + '</p> ').show();---------not working
-      // console.log($('#text').html('Yes!, it was the right answer!').show());
-      // $('#img').append(question.imageRight);
-  
+   
     } else {
       $('#text').html('Nope!, it was the ' + question.correct).show();
     };
@@ -171,7 +161,7 @@ function check(userGuess) {
       if (currentQ >= questions.length) {
         summary();
       } else {
-        // setTimeout(fiveSecond,5000);
+       
         showQ();
       };
       
@@ -180,12 +170,6 @@ function check(userGuess) {
   
 //------------------------function for timer
 // the run function sets the timer interval at 1 second decrement
-// setTimeout(fiveSecond,1000*5);
-
-// function fiveSecond (){
-//  summary();
-
-// }
 
 function run() {
   intervalId = setInterval(decrement, 1000);
@@ -197,11 +181,11 @@ function decrement() {
   
   timeRunning--;
   $("#time-remaining").html("Time remaining: " + timeRunning);
-   if(timeRunning === 0){
+   if(timeRunning == -1 ){
      clearInterval(intervalId);
      clockRunning= false;
-    
-     $("#time-out").show().text("Time Out");
+    alert ('Time up!');
+     $("#time-out").html( "Time's Up!!").show();
      
     //  .css("text-align", "center").show(); THIS IS NOT WORKING
    };
