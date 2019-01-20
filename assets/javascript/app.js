@@ -214,7 +214,7 @@ function summary() {
       .css("text-align", "center");
       $("#img").append(imgWrong).show();
    };
-
+   $('#reset').show();
   $("#correct").html("Correct guess: " + correct + " : ");
   $("#incorrect").html("Incorrect guess: " + incorrect + " : ");
   $("#total").html(
