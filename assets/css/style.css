@@ -1,15 +1,14 @@
-*{
-    font-size:20px;
-    font-family: 'Mouse Memoirs', sans-serif;
-  }
+
   .jumbotron {
     background: #006e90;
-    font-size: 50px;
+    font-size: 52px;
     text-align: center;
     color: #99c24d;
   }
   body {
-    background-image: url('images/disney.jpg');
+    background-image: url('disney.jpg');  
+    font-family: 'Mouse Memoirs', sans-serif; 
+    font-size:22px;
   }
 
   h2 {
